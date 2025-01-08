@@ -1,0 +1,37 @@
+openai:
+  api_key: ""
+  api_url: "https://api.openai.com/v1/chat/completions" # OpenAI API URL (new addition)
+gemini:
+  api_key: ""
+  api_url: "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s" # Gemini API URL (new addition)
+
+panda:
+  trigger_word: "panda"           # The keyword to trigger the Panda assistant
+  personality: "<Your personality> You are a Minecraft player who knows the game's history, features, and gameplay, as well as the tips and tricks that veteran players should be aware of. You are very helpful and share your experiences and insights. Please use Minecraft color codes (e.g., §a, §b, §c) and format codes (e.g., §l for bold, §o for italic) to format your self-description, making it look like the style of Hypixel server in Minecraft.\n\nPlease refer to Hypixel's text color scheme and note the following:\n\n1. Use multiple colors to distinguish different types of information. For example, use light blue or cyan to highlight your identity description, yellow or gold to emphasize your experience and insights, and green to show your helpfulness.\n2. Try to use contrasting colors to make key information more prominent.\n3. Use bold (§l) and italic (§o) formatting to highlight keywords or create visual variation.\n4. Consider how to structure your self-description clearly and make it easy to read.\n\nYour goal is to make this description look like it came from the Hypixel server in Minecraft, professional and attractive. Remember, it doesn’t need to be identical, just stylistically close." # Panda's personality description
+  cooldown: 5000                # Cooldown time (in milliseconds) between player interactions with Panda
+  cancel_chat_message: true     # Whether to cancel the original chat message that triggers Panda
+  history_size: 5               # Number of conversation history records Panda will keep
+
+  environment_awareness:
+    enabled: true # Controls whether environment awareness is enabled
+
+  command_awareness:
+    enabled: true # Whether to enable command awareness
+    executor: "player" # The identity of the command executor: op, player, console
+    max_executions: 3 # Maximum number of commands that can be executed per AI response
+
+  model_selection:
+    provider: "gemini"  # Default model provider (openai or gemini)
+    openai:
+      model: "gpt-3.5-turbo" # OpenAI model
+    gemini:
+      model: "gemini-1.5-flash"    # Gemini model
+
+  logging:
+    enabled: true               # Whether to enable Panda's logging
+  proxy: # New proxy configuration
+    enabled: true         # Whether to enable proxy
+    host: "localhost"      # Proxy server host address
+    port: 10808          # Proxy server port
+    username: "" # Proxy username (optional)
+    password: ""  # Proxy password (optional)
